@@ -19,3 +19,9 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
+.me {
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 10vh;
+}
