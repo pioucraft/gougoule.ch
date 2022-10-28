@@ -1,0 +1,21 @@
+body {
+    background:#1C1C1C;
+}
+
+h1 {
+    font-size: 7vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+}
+
+.intro {
+    color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+}
