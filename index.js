@@ -24,8 +24,6 @@ app.use("/style", express.static("/home/emmanuel_macron/jesépakoi/programinc/go
 app.use("/js", express.static("/home/emmanuel_macron/jesépakoi/programinc/gougoule.ch/html/home/js/"))
 
 
-//add random meme image
-(Math.floor(Math.random() * 4));
 
 
 app.listen(PORT, () => {
