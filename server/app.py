@@ -1,6 +1,7 @@
 from flask import Flask
 from duckduckgo_search import ddg
 from flask_cors import CORS
+import wikipedia
 app = Flask(__name__)
 CORS(app)
 
