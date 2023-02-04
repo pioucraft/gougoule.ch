@@ -1,14 +1,17 @@
 from flask import Flask
 from duckduckgo_search import ddg
-import waitress
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
+
+
 @app.route('/api/search/<lang>/<query>')
 def getInfo(lang, query):
+    query = query.replace("+", " ")
     results = {}
     results["duckduckgo"] = {}
     results["duckduckgo"] = ddg(query, region=f"ch-{lang}", max_results=15)
     return results
-
 
 
 

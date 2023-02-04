@@ -1,0 +1,32 @@
+body {
+    background-color:#2a2a2a;  
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+.results {
+    margin-left: 5vh;
+}
+
+h2 {
+    margin-top: 8vh;
+}
+
+.search {
+    height: 5vh;
+    width: 40vh;
+    border: 2px solid black;
+    border-radius: 5vh;
+    font-size: large;
+    margin-left: 3vh;
+    position: absolute;
+}
+
+.home {
+    height: 5vh;
+    width: 5vh;
+    cursor: pointer;
+    background-color: #2a2a2a;
+    border: 0;
+    font-size: 5vh;
+}
