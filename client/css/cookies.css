@@ -1,0 +1,16 @@
+.hide {
+    visibility: hidden;
+    position: fixed;
+    margin-top: 1vh;
+}
+
+.show {
+    visibility: visible;
+    position: fixed;
+    bottom: 1vh;
+    background-color: #202020;
+    border-radius: 5vh;
+    height: 50vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}

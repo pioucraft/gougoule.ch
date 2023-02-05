@@ -1,10 +1,10 @@
 body {
     background-color:#2a2a2a;
     font-family: 'Gill Sans', 'Gill Sans MT', "Calibri", 'Trebuchet MS', sans-serif;
+    color: white;
 }
 
 .search-text {
-    color: white;
     text-align: center;
     font-size: 6vh;
     margin-top: 35vh ;
@@ -26,14 +26,13 @@ body {
 
 
 .down-arrow {
-    position: absolute;
-    top: calc(100vh - 150px);
+    position:absolute;
+    top: 90vh;
     left: calc(50% - 14px);
     width: 0;
     height: 30px;
     border: 2px solid;
     border-radius: 2px;
-    color: white;
 }
   
   .down-arrow:after {
@@ -53,7 +52,6 @@ body {
 
 
 div.whoami {
-    color: white;
     margin-top: 50vh;
     border-radius: 5vh;
     border: 2px solid #202020;
@@ -71,7 +69,6 @@ p.whoami {
 }
 
 div.why {
-    color: white;
     margin-top: 5vh;
     border-radius: 5vh;
     border: 2px solid #202020;
@@ -89,7 +86,6 @@ p.why {
 }
 
 div.links {
-    color: white;
     margin-top: 5vh;
     border-radius: 5vh;
     border: 2px solid #202020;
@@ -107,7 +103,6 @@ p.links {
 }
 
 div.news {
-    color: white;
     margin-top: 5vh;
     border-radius: 5vh;
     border: 2px solid #202020;

@@ -19,11 +19,9 @@ body {
 
 div.search_duckduckgo {
     margin-top: 8vh;
-    color: white;
     border-radius: 5vh;
     border: 2px solid #202020;
     background-color: #202020;
-    
 }
 
 h2 {
@@ -39,6 +37,7 @@ p {
 a {
     margin-left: 3vh;
     margin-right: 3vh;
+    color: whitesmoke;
 }
 
 .search {

@@ -5,6 +5,7 @@ queryString = queryString.replace("?q=", "")
 fetch("https://gougoule.ch/api/search/fr/" + queryString).then(responses => responses.json()).then(function(data){
     console.log(data)
 
+
     document.getElementById("title_1").innerHTML = data["duckduckgo"]["0"]["title"];
     document.getElementById("href_1").innerHTML = data["duckduckgo"]["0"]["href"];
     document.getElementById("description_1").innerHTML = data["duckduckgo"]["0"]["body"];

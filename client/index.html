@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script> 
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cookies.css">
+    <script src="javscript/index.js"></script> 
+    <script src="javscript/cookies.js"></script> 
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
-<body>
-    <p class="to_change" id="to_change"></p>
-    <h1 class="search-text">BIENVENUE SUR  GOUGOULE.CH</h1>
-    <input type="search" id="search" placeholder=" 🔎  rechercher sur l'internet" class="search" onchange="openpage()">
-    <div class="down-arrow"></div>
+<body onload="checkcookies()">
+    <div id="cookiePopup" class="show">
+        <h2>qui aime les cookies ici ?</h2>
+        <p>
+            ce site utilise des cookies, en continuant la navigation sur ce site vous acceptez l'utilisation des cookies (pour stocker des informations importantes comme votre langue ou votre thème preféré mais jamais pour vous tracker)
+        </p>
+        <button id="acceptCookie" class="accepCookie" onclick="okcookies()">Accept</button>
+      </div>
+    <div class="search-div">
+        <h1 class="search-text">BIENVENUE SUR  GOUGOULE.CH</h1>
+        <input type="search" id="search" placeholder=" 🔎  rechercher sur l'internet" class="search" onchange="openpage()">
+        <div class="down-arrow"></div>
+    </div>
     <div class="whoami">
         <h2 class="whoami">Qui suis-je ?</h2>
         <p class="whoami">Soit vous me conaissez, soit vous ne me conaissez pas et dans ce cas là je vais vous demander comment vous avez eu le lien de ce site. Donc voila je n'ai pas besoin de me présenter</p>
