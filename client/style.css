@@ -15,17 +15,110 @@ body {
     margin: auto;
     display: block;
     margin-top: 9vh ;
-    border: 2px solid black;
+    border: 2px solid #202020;
     border-radius: 5vh;
     font-size: large;
+    background-color: #202020;
+    color: white;
 }
 
-.whoami {
+
+
+
+.down-arrow {
+    position: absolute;
+    top: calc(100vh - 150px);
+    left: calc(50% - 14px);
+    width: 0;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 2px;
+    color: white;
+}
+  
+  .down-arrow:after {
+    content: " ";
+    position: absolute;
+    top: 12px;
+    left: -10px;
+    width: 16px;
+    height: 16px;
+    border-bottom: 4px solid;
+    border-right: 4px solid;
+    border-radius: 4px;
+    transform: rotateZ(45deg);
+}
+  
+
+
+
+div.whoami {
     color: white;
     margin-top: 50vh;
     border-radius: 5vh;
-    border: 2px solid black;
+    border: 2px solid #202020;
+    background-color: #202020;
 }
+
+h2.whoami {
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+p.whoami {
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+div.why {
+    color: white;
+    margin-top: 5vh;
+    border-radius: 5vh;
+    border: 2px solid #202020;
+    background-color: #202020;
+}
+
+h2.why {
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+p.why {
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+div.links {
+    color: white;
+    margin-top: 5vh;
+    border-radius: 5vh;
+    border: 2px solid #202020;
+    background-color: #202020;
+}
+
+h2.links {
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+p.links {
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+div.news {
+    color: white;
+    margin-top: 5vh;
+    border-radius: 5vh;
+    border: 2px solid #202020;
+    background-color: #202020;
+}
+
+h2.news {
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
 
 footer {
     margin-top: 150% ;
