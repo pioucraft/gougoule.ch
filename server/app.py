@@ -11,7 +11,7 @@ def getInfo(lang, query):
     query = query.replace("+", " ")
     results = {}
     results["duckduckgo"] = {}
-    results["duckduckgo"] = ddg(query, region=f"ch-{lang}", max_results=15)
+    results["duckduckgo"] = ddg(query, region=f"{lang}", max_results=15)
     return results
 
 

@@ -14,3 +14,19 @@
     margin-left: 1vh;
     margin-right: 1vh;
 }
+
+.cookiePopup {
+    margin-left: 3vh;
+    margin-right: 3vh;
+    cursor: pointer;
+}
+
+button.cookiePopup {
+    background-color: #2a2a2a;
+    border: 2px solid #202020;
+    border-radius: 5vh;
+    color: white;
+    height: 10vh;
+    width: 30vh;
+    font-size: large;
+}

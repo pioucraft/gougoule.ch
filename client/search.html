@@ -8,8 +8,17 @@
     <script src="javscript/search.js"></script> 
     <link rel="stylesheet" href="css/search.css">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/cookies.css">
+    <script src="javscript/cookies.js"></script> 
 </head>
-<body>
+<body onload="checkcookies()" class="darkmode">
+    <div id="cookiePopup" class="hide">
+        <h2 class="cookiePopup">Qui aime les cookies ici ?</h2>
+        <p class="cookiePopup">
+            Ce site utilise des cookies, en continuant la navigation sur ce site vous acceptez l'utilisation des cookies (pour stocker des informations importantes comme votre langue ou votre thème preféré mais jamais pour vous tracker)
+        </p>
+        <button id="acceptCookie" class="cookiePopup" onclick="okcookies()">Acceptper</button>
+    </div>
     <div class="top">
         <button onclick="indexhtml()" class="home">
             <img src="images/home.png" alt="home" class="home">

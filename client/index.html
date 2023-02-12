@@ -10,13 +10,13 @@
     <script src="javscript/cookies.js"></script> 
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
-<body onload="checkcookies()">
-    <div id="cookiePopup" class="show">
-        <h2>qui aime les cookies ici ?</h2>
-        <p>
-            ce site utilise des cookies, en continuant la navigation sur ce site vous acceptez l'utilisation des cookies (pour stocker des informations importantes comme votre langue ou votre thème preféré mais jamais pour vous tracker)
+<body onload="checkcookies()" class="darkmode">
+    <div id="cookiePopup" class="hide">
+        <h2 class="cookiePopup">Qui aime les cookies ici ?</h2>
+        <p class="cookiePopup">
+            Ce site utilise des cookies, en continuant la navigation sur ce site vous acceptez l'utilisation des cookies (pour stocker des informations importantes comme votre langue ou votre thème preféré mais jamais pour vous tracker)
         </p>
-        <button id="acceptCookie" class="accepCookie" onclick="okcookies()">Accept</button>
+        <button id="acceptCookie" class="cookiePopup" onclick="okcookies()">Accepter</button>
       </div>
     <div class="search-div">
         <h1 class="search-text">BIENVENUE SUR  GOUGOULE.CH</h1>
