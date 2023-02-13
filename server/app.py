@@ -1,15 +1,12 @@
 from flask import Flask
 from duckduckgo_search import ddg
 from flask_cors import CORS
-import json
-import os
 
-os.chdir(r"/home/emmanuel_macron/Documents/programinc/gougoule.ch/server/")
 app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/api/search/<lang>/<query>')
+@app.route('/<lang>/<query>')
 def search(lang, query):
     query = query.replace("+", " ")
     results = {}
