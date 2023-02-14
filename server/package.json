@@ -1,0 +1,24 @@
+{
+  "name": "gougoule",
+  "version": "1.0.0",
+  "description": "gougoule.ch website (serverside)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pioucraft/gougoule.ch.git"
+  },
+  "author": "pioucraft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pioucraft/gougoule.ch/issues"
+  },
+  "homepage": "https://github.com/pioucraft/gougoule.ch#readme",
+  "dependencies": {
+    "duck-duck-scrape": "^2.2.2",
+    "express": "^4.18.2"
+  }
+}
