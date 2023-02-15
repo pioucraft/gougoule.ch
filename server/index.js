@@ -4,6 +4,10 @@ const port = 3000;
 const fs = require('fs');
 const DDG = require('duck-duck-scrape');
 
+var cors = require('cors')
+
+app.use(cors())
+
 app.all('/api/add-email/:email', (req, res) => {
     let email = req.params.email;
     let emails = fs.readFileSync(__dirname + '/emails.json','utf-8');
@@ -29,5 +33,5 @@ app.all("/api/search/:query", (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`app listening on port ${port}`);
+    console.log(`app is ready (http://127.0.0.1:${port}/api/)`);
 });

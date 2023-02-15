@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
     "duck-duck-scrape": "^2.2.3"
   }
 }
