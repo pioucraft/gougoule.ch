@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const fs = require('fs');
+const DDG = require('duck-duck-scrape');
 
 app.all('/api/add-email/:email', (req, res) => {
-    email = req.params.email;
+    let email = req.params.email;
     let emails = fs.readFileSync(__dirname + '/emails.json','utf-8');
     emails = JSON.parse(emails)
     if (emails.includes(email) == false) {
@@ -17,7 +18,16 @@ app.all('/api/add-email/:email', (req, res) => {
     }
 });
 
+app.all("/api/search/:query", (req, res) => {
+    let query = req.params.query;
+    DDG.search(query, {
+        safeSearch: DDG.SafeSearchType.STRICT
+    }).then((data) => res.send(data));
+});
+
+
+
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`app listening on port ${port}`);
 });
