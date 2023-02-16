@@ -5,7 +5,6 @@ console.log(queryString)
 
 function search() {
     fetch("http://127.0.0.1:3000/api/duckduckgo/" + queryString).then(responses => responses.json()).then(function(data){
-        console.log(data)
 
         for(i = 0; i <= 14; i++) {
         document.getElementById("title_" + (i + 1)).innerHTML = data["results"][i]["title"];
