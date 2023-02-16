@@ -22,7 +22,7 @@ app.all('/api/add-email/:email', (req, res) => {
     }
 });
 
-app.all("/api/search/:query", (req, res) => {
+app.all("/api/duckduckgo/:query", (req, res) => {
     let query = req.params.query;
     DDG.search(query, {
         safeSearch: DDG.SafeSearchType.STRICT
