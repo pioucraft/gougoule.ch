@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>recherche Gougoule.ch</title>
-    <script src="js/search.js"></script>
+    <title>utilisateur Gougoule.ch</title>
+    <script src="js/user.js"></script>
+    <link rel="stylesheet" href="css/user.css">
     <link rel="stylesheet" href="css/topbar.css">
     <script src="js/topbar.js"></script>
-    <link rel="stylesheet" href="css/search.css">k
 </head>
 <body>
     <div class="topbar">
@@ -27,11 +27,15 @@
             <img src="images/account.svg" alt="account default logo" class="topbar-account-image" id="topbar-account-image" widht="100" height="100">
         </button>
     </div>
-    <div class="duckduckgo" id="duckduckgo">
-        <h1 class="information">résultats de duckduckgo:</h1>
+    <div class="user" id="user">
+        <img src="images/account.svg" alt="" class="originalprofilePicture" id="profilePicture" widht="100" height="100">
+        <h1 class="username" id="username">utilisateur pas trouvé</h1>
+        <h2 class="unique" id="unique">unique</h2>
+        <p class="bio" id="bio"></p>
+        <button class="follow" id="follow" onclick="follow()">suivre</button>
+        <button class="following" id="following">abonnements: </button>
+        <button class="followers" id="followers">abonnés: </button>
     </div>
-    <div id="results" class="posts">
-        <h1 class="information">résultats sur le réseau social de gougoule.ch:</h1>
-    </div>
+    <div class="posts" id="posts"></div>
 </body>
 </html>
