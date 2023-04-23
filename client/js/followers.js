@@ -3,10 +3,10 @@ queryString = queryString.replace("?u=", "")
 ShowThing(0, 20)
 var stupidNumber = 0
 function ShowThing(from, to) {
-    fetch(`http://localhost:3000/api/get-user/${queryString}`).then(val => val.json()).then(val => {
+    fetch(`https://gougoule.ch/api/get-user/${queryString}`).then(val => val.json()).then(val => {
         console.log(val.followers)
         for(let i=0; i < to - from; i++) {
-            fetch(`http://localhost:3000/api/get-user/${val.followers[from + i]}`).then(user => user.json()).then(user => {
+            fetch(`https://gougoule.ch/api/get-user/${val.followers[from + i]}`).then(user => user.json()).then(user => {
                 let profilePicture = user.profilePicture
                 for(i=0; i < profilePicture.length; i++) {
                     profilePicture = profilePicture.replace("|", "/")

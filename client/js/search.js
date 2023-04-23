@@ -4,7 +4,7 @@ var unique = getCookie("unique")
 var token = getCookie("token")
 var stupidNumber = 0
 
-fetch("http://127.0.0.1:3000/api/search-web/" + queryString).then(responses => responses.json()).then(async data => {
+fetch("https://gougoule.ch/api/search-web/" + queryString).then(responses => responses.json()).then(async data => {
     console.log(data)
     let daNumber = 0
     if(data.results.length > 15) {
@@ -20,15 +20,15 @@ fetch("http://127.0.0.1:3000/api/search-web/" + queryString).then(responses => r
 });
 
 
-fetch(`http://localhost:3000/api/search-social/${queryString}`).then(val => val.json()).then(async val => {
+fetch(`https://gougoule.ch/api/search-social/${queryString}`).then(val => val.json()).then(async val => {
     console.log(val)
     console.log(val.length)
-    //let user = await fetch(`http://localhost:3000/api/get-user/${val[0].author}`)
+    //let user = await fetch(`https://gougoule.ch/api/get-user/${val[0].author}`)
     //user = await user.json()
     while(val.length > stupidNumber) {
         let message = val[stupidNumber]
         console.log(message)
-        let user = await (await fetch("http://localhost:3000/api/get-user/"+message.author)).json()
+        let user = await (await fetch("https://gougoule.ch/api/get-user/"+message.author)).json()
         let likeOrNot
         if(message.likes.includes(unique)) {
             likeOrNot = "unlike"
@@ -77,7 +77,7 @@ async function like(message) {
         location.href = "login.html"
     }
     else {
-        await fetch(`http://localhost:3000/api/like-message/${unique}/${token}/${message}`).then(val => val.json()).then(val => {
+        await fetch(`https://gougoule.ch/api/like-message/${unique}/${token}/${message}`).then(val => val.json()).then(val => {
             console.log("liked or not")
             console.log(val)
             if(val.response.includes("unliked")) {

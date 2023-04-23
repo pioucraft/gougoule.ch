@@ -4,9 +4,9 @@ var unique = getCookie("unique")
 var token = getCookie("token")
 var stupidNumber = 0
 
-fetch(`http://localhost:3000/api/get-message/${queryString}`).then(val => val.json()).then(val => {
+fetch(`https://gougoule.ch/api/get-message/${queryString}`).then(val => val.json()).then(val => {
     console.log(val)
-    fetch(`http://localhost:3000/api/get-user/${val.author}`).then(user => user.json()).then(user => {
+    fetch(`https://gougoule.ch/api/get-user/${val.author}`).then(user => user.json()).then(user => {
         console.log(user)
         let likeOrNot
         if(val.likes.includes(unique)) {
@@ -60,7 +60,7 @@ async function like(message) {
         location.href = "login.html"
     }
     else {  
-        await fetch(`http://localhost:3000/api/like-message/${unique}/${token}/${message}`).then(val => val.json()).then(val => {
+        await fetch(`https://gougoule.ch/api/like-message/${unique}/${token}/${message}`).then(val => val.json()).then(val => {
             console.log("liked or not")
             console.log(val)
             if(val.response.includes("unliked")) {
@@ -81,7 +81,7 @@ async function showPosts(original, from, to) {
     for(let i = 0; i < to - from; i++) {
         let message = original["responses"][i+from]
         console.log(message)
-        await fetch("http://localhost:3000/api/get-message/" + message).then(val => val.json()).then(val => {
+        await fetch("https://gougoule.ch/api/get-message/" + message).then(val => val.json()).then(val => {
             console.log("fetched")
             console.log(val)
             let likeOrNot
@@ -93,7 +93,7 @@ async function showPosts(original, from, to) {
             }
 
             if(val.content) {
-                fetch("http://localhost:3000/api/get-user/" + (val.author)).then(user => user.json()).then(user => {
+                fetch("https://gougoule.ch/api/get-user/" + (val.author)).then(user => user.json()).then(user => {
                     for(i=0; i < val.content.length; i++) {
                         val.content = val.content.replace("|", "/")
                     }
@@ -110,7 +110,7 @@ async function showPosts(original, from, to) {
 }
 
 function loadMore() {
-    fetch(`http://localhost:3000/api/get-user/${queryString}`).then(val => val.json()).then(val => {
+    fetch(`https://gougoule.ch/api/get-user/${queryString}`).then(val => val.json()).then(val => {
         showPosts(val, stupidNumber, stupidNumber + 20)
     })
 }
@@ -125,5 +125,5 @@ function postResponse() {
 
 function modify() {
     newMessage = document.getElementById("modify").value
-    fetch(`http://localhost:3000/api/update-message/${unique}/${token}/${queryString}/${newMessage}`).then(val => val.json()).then(val => console.log(val))
+    fetch(`https://gougoule.ch/api/update-message/${unique}/${token}/${queryString}/${newMessage}`).then(val => val.json()).then(val => console.log(val))
 }

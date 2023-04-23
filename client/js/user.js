@@ -3,7 +3,7 @@ queryString = queryString.replace("?u=", "")
 var unique = getCookie("unique")
 var stupidNumber = 0
 
-fetch(`http://localhost:3000/api/get-user/${queryString}`).then(val => val.json()).then(async val => {
+fetch(`https://gougoule.ch/api/get-user/${queryString}`).then(val => val.json()).then(async val => {
     console.log(val)
     document.getElementById("username").innerHTML = val.username
     document.getElementById("unique").innerHTML =`@${val.unique}`
@@ -20,8 +20,8 @@ fetch(`http://localhost:3000/api/get-user/${queryString}`).then(val => val.json(
     document.getElementById("following").setAttribute("onclick", `location.href = "following.html?u=${val.unique}"`)
     document.getElementById("followers").innerHTML = `abonnés: ${val.followers.length}`
     document.getElementById("followers").setAttribute("onclick", `location.href = "followers.html?u=${val.unique}"`)
-    console.log((await (await fetch(`http://localhost:3000/api/get-user/${unique}`)).json()).following.includes(queryString))
-    if(await (await (await fetch(`http://localhost:3000/api/get-user/${unique}`)).json()).following.includes(queryString)) {
+    console.log((await (await fetch(`https://gougoule.ch/api/get-user/${unique}`)).json()).following.includes(queryString))
+    if(await (await (await fetch(`https://gougoule.ch/api/get-user/${unique}`)).json()).following.includes(queryString)) {
         document.getElementById("follow").innerHTML = "arrêter de suivre"
     }
     else {
@@ -35,7 +35,7 @@ async function showPosts(user, from, to) {
     for(let i = 0; i < to - from; i++) {
         let message = user["messages"][i+from]
         console.log(message)
-        await fetch("http://localhost:3000/api/get-message/" + message).then(val => val.json()).then(val => {
+        await fetch("https://gougoule.ch/api/get-message/" + message).then(val => val.json()).then(val => {
             console.log("fetched")
             console.log(val)
             let likeOrNot
@@ -47,7 +47,7 @@ async function showPosts(user, from, to) {
             }
 
             if(val.content) {
-                fetch("http://localhost:3000/api/get-user/" + (val.author)).then(author => author.json()).then(author => {
+                fetch("https://gougoule.ch/api/get-user/" + (val.author)).then(author => author.json()).then(author => {
                     for(i=0; i < val.content.length; i++) {
                         val.content = val.content.replace("|", "/")
                     }
@@ -65,7 +65,7 @@ async function showPosts(user, from, to) {
 }
 
 function loadMore() {
-    fetch(`http://localhost:3000/api/get-user/${queryString}`).then(val => val.json()).then(val => {
+    fetch(`https://gougoule.ch/api/get-user/${queryString}`).then(val => val.json()).then(val => {
         showPosts(val, stupidNumber, stupidNumber + 20)
     })
 }
@@ -80,7 +80,7 @@ async function follow() {
         location.href = "login.html"
     }
     else {
-        await fetch(`http://localhost:3000/api/follow/${unique}/${token}/${queryString}`).then(val => val.json()).then(val => {
+        await fetch(`https://gougoule.ch/api/follow/${unique}/${token}/${queryString}`).then(val => val.json()).then(val => {
             console.log("followed or not")
             console.log(val)
             if(val.response.includes("unfollowed")) {
@@ -99,7 +99,7 @@ async function like(message) {
     console.log("trying")
     let token = getCookie("token")
     let unique = getCookie("unique")
-    await fetch(`http://localhost:3000/api/like-message/${unique}/${token}/${message}`).then(val => val.json()).then(val => {
+    await fetch(`https://gougoule.ch/api/like-message/${unique}/${token}/${message}`).then(val => val.json()).then(val => {
         console.log("liked or not")
         console.log(val)
         if(val.response.includes("unliked")) {

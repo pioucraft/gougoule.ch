@@ -23,9 +23,9 @@ function goLogin() {
 function login()  {
     let password = document.getElementById("login-password").value;
     let unique = document.getElementById("login-unique").value;
-    fetch("http://localhost:3000/api/get-token/" + unique + "/" + password).then(val => val.json()).then(val => {
+    fetch("https://gougoule.ch/api/get-token/" + unique + "/" + password).then(val => val.json()).then(val => {
         console.log(val)
-        console.log("http://localhost:3000/api/get-token/" + unique + "/" + password)
+        console.log("https://gougoule.ch/api/get-token/" + unique + "/" + password)
         if(val["code"] != "-1") {
             document.cookie = "token =" + val["response"] + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=Strict; Secure=True;"
             document.cookie = "unique =" + unique + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=Strict; Secure=True;"
@@ -40,14 +40,14 @@ function login()  {
 function signUp() {
     let password = document.getElementById("login-password").value;
     let unique = document.getElementById("login-unique").value;
-    fetch("http://localhost:3000/api/register/IAgreeToTheThermsOfServiceAndIAgreeToCookies/" + unique + "/" + password + "/" + unique).then(val => val.json()).then(val => {
+    fetch("https://gougoule.ch/api/register/IAgreeToTheThermsOfServiceAndIAgreeToCookies/" + unique + "/" + password + "/" + unique).then(val => val.json()).then(val => {
         console.log(val)
         if(val["code"] != "-1") {
             document.cookie = "token =" + val["response"] + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=Strict; Secure=True;"
             document.cookie = "unique =" + unique + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=Strict; Secure=True;"
             document.getElementById("login-title").innerHTML = "Signed up sucessfully";
             location.href = "index.html"
-            fetch(`http://localhost:3000/api/follow/${unique}/${val["response"]}/${unique}`)
+            fetch(`https://gougoule.ch/api/follow/${unique}/${val["response"]}/${unique}`)
         }
         else {
             window.alert("erreur durant la création du compte (peut-être votre mot de passe est trop long ou votre nom d'utilisateur contient des charactères invalides)")

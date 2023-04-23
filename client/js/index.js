@@ -4,32 +4,27 @@ var unique = getCookie("unique")
 var token = getCookie("token")
 var stupidNumber = 0
 var postsToShow = []
+var daI = 0
+var notDaI = 0
 
-fetch(`http://localhost:3000/api/get-user/${unique}`).then(val => val.json()).then(async (user) => {
-
-    
-    if(user.following.length == 1) {
-        await fetch(`http://localhost:3000/api/get-user/${user.following[0]}`).then(val => val.json()).then(val => {
-            postsToShow = val.messages.reverse()
+fetch(`https://gougoule.ch/api/get-user/${unique}`).then(val => val.json()).then(async (user) => {
+    console.log(user.following)
+    console.log(user.following.length)
+    while(notDaI<user.following.length) {
+        await fetch(`https://gougoule.ch/api/get-user/${user.following[notDaI]}`).then(val => val.json()).then(val => {
+            postsToShow = postsToShow.concat(val.messages)   
         })
-        showPosts(postsToShow, 0, 20)
-    }
-    else if(user.following.length > 1) {
-        for(i=0; i<user.following.length; i++) {
-            await fetch(`http://localhost:3000/api/get-user/${user.following[i]}`).then(val => val.json()).then(val => {
-                postsToShow = postsToShow.concat(val.messages)   
-            })
+        notDaI++
  
-        }
-        postsToShow = postsToShow.sort( function( a , b){
-            if(a > b) return 1;
-            if(a < b) return -1;
-            return 0;
-        });
-        console.log(postsToShow)
-        postsToShow = postsToShow.reverse()
-        showPosts(postsToShow, 0, 10)
     }
+    postsToShow = postsToShow.sort( function( a , b){
+        if(a > b) return 1;
+        if(a < b) return -1;
+        return 0;
+    });
+    console.log(postsToShow)
+    postsToShow = postsToShow.reverse()
+    showPosts(postsToShow, 0, 10)
     
 })
 
@@ -64,10 +59,10 @@ function bigSearch() {
 }
 
 async function showPosts(messages, from, to) {
-    for(let i = 0; i < to - from; i++) {
+    while(daI < to-from) {
         console.log(messages)
-        let message = messages[i+from]
-        await fetch(`http://localhost:3000/api/get-message/${message}`).then(val => val.json()).then(val => {
+        let message = messages[daI+from]
+        await fetch(`https://gougoule.ch/api/get-message/${message}`).then(val => val.json()).then(val => {
             let likeOrNot
             if(val.likes.includes(unique)) {
                 likeOrNot = "unlike"
@@ -77,7 +72,7 @@ async function showPosts(messages, from, to) {
             }
 
             if(val.content) {
-                fetch(`http://localhost:3000/api/get-user/${val.author}`).then(author => author.json()).then(author => {
+                fetch(`https://gougoule.ch/api/get-user/${val.author}`).then(author => author.json()).then(author => {
                     for(i=0; i < val.content.length; i++) {
                         val.content = val.content.replace("|", "/")
                     }
@@ -89,6 +84,7 @@ async function showPosts(messages, from, to) {
                 })
             }
         })
+        daI++
     }
     
 }
@@ -102,7 +98,7 @@ async function like(message) {
         location.href = "login.html"
     }
     else {
-        await fetch(`http://localhost:3000/api/like-message/${unique}/${token}/${message}`).then(val => val.json()).then(val => {
+        await fetch(`https://gougoule.ch/api/like-message/${unique}/${token}/${message}`).then(val => val.json()).then(val => {
             console.log("liked or not")
             console.log(val)
             if(val.response.includes("unliked")) {

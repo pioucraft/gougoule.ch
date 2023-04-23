@@ -125,7 +125,7 @@ const postMessageQueue = async.queue(async (task) => {
             let messagething = task.content.split(" ")
             let imageGroup = ""
             for(let i=0; i< messagething.length; i++) {
-                if(messagething[i].startsWith("http://localhost:3000/api/uploads")) {
+                if(messagething[i].startsWith("https://gougoule.ch/api/uploads")) {
                     imageGroup = imageGroup + ` <image src="${messagething[i]}" width="250" height="250"> `
                     messagething[i] = ""
                     console.log(messagething)
@@ -622,7 +622,7 @@ const setProfilePictureQueue = async.queue(async (task) => {
     }
     else {
         try {
-            task.profilePicture = `http://localhost:3000/api/uploads/${task.profilePicture}`
+            task.profilePicture = `https://gougoule.ch/api/uploads/${task.profilePicture}`
             const result = await set_profilePicture(task.unique, task.token, task.profilePicture)
             task.res.send(result)
         } catch (err) {
@@ -710,7 +710,7 @@ const uploadQueue = async.queue(async (task, callback) => {
                     task.res.send({
                         code: "0",
                         response:
-                        "http://localhost:3000/api/uploads/resized_" + lastFileName,
+                        "https://gougoule.ch/api/uploads/resized_" + lastFileName,
                     });
                     }
                 );
@@ -771,5 +771,5 @@ app.all("/api/upload-picture", uploadimiter, async (req, res) => {
 app.use('/api/uploads', express.static('uploads'))
 
 app.listen(port, () => {
-    console.log(`app is ready (http://127.0.0.1:${port}/api/)`);
+    console.log(`app is ready (https://127.0.0.1:${port}/api/)`);
 });

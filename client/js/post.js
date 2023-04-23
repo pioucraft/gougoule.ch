@@ -17,7 +17,7 @@ function postMessage() {
     for(i=0; i < content.length; i++) {
         content = content.replace("/", "|")
     }
-    fetch(`http://localhost:3000/api/post-message/${unique}/${token}/${content}/${queryString}`).then(val => val.json()).then(val =>  {
+    fetch(`https://gougoule.ch/api/post-message/${unique}/${token}/${content}/${queryString}`).then(val => val.json()).then(val =>  {
         console.log(val)
         location.href = "index.html"
     })

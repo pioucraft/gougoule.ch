@@ -5,7 +5,7 @@ function search() {
 }
 var unique = getCookie("unique")
 
-fetch(`http://localhost:3000/api/get-user/${unique}`).then(val => val.json()).then(async (user) => {
+fetch(`https://gougoule.ch/api/get-user/${unique}`).then(val => val.json()).then(async (user) => {
     document.getElementById("topbar-username").innerHTML = user.username
     let profilePicture = user.profilePicture
     for(i=0; i < profilePicture.length; i++) {
