@@ -62,8 +62,9 @@ async function showPosts(messages, from, to) {
     while(daI < to-from) {
         console.log(messages)
         let message = messages[daI+from]
-        await fetch(`https://gougoule.ch/api/get-message/${message}`).then(val => val.json()).then(val => {
+        await fetch(`https://gougoule.ch/api/get-message/${message}`).then(val => val.json()).then( async (val) => {
             let likeOrNot
+            console.log(val.likes.includes(unique))
             if(val.likes.includes(unique)) {
                 likeOrNot = "unlike"
             }
@@ -72,13 +73,14 @@ async function showPosts(messages, from, to) {
             }
 
             if(val.content) {
-                fetch(`https://gougoule.ch/api/get-user/${val.author}`).then(author => author.json()).then(author => {
+                await fetch(`https://gougoule.ch/api/get-user/${val.author}`).then(author => author.json()).then(author => {
                     for(i=0; i < val.content.length; i++) {
                         val.content = val.content.replace("|", "/")
                     }
                     for(i=0; i < author.profilePicture.length; i++) {
                         author.profilePicture = author.profilePicture.replace("|", "/")
                     }
+                    console.log(message)
                     document.getElementById("posts").innerHTML = document.getElementById("posts").innerHTML + `<div class="post"><button onclick='location.href="user.html?u=${author.unique}"' class="post-button-account"><img src="${author.profilePicture}" alt="" class="profilePicture" id="profilePicture" widht="100" height="100"><h2 class="post-username">${author.username}</h2><h3 class="post-unique">@${val.author}</h3></button><h2 class="post-content">${val.content}</h2><div class="buttons"><button id="like${message}" onclick="like('${message}')" class="button-like">${likeOrNot}  ${val.likes.length}</button><button onclick="location.href ='message.html?m=${message}'" class="button-comments">commentaires</button></div></div>`
                     stupidNumber = stupidNumber + 1
                 })
@@ -91,6 +93,7 @@ async function showPosts(messages, from, to) {
 
 async function like(message) {
     console.log("trying")
+    console.log(message)
     let token = getCookie("token")
     let unique = getCookie("unique")
     if(unique == null) {
