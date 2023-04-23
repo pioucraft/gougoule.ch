@@ -10,7 +10,7 @@ var notDaI = 0
 fetch(`https://gougoule.ch/api/get-user/${unique}`).then(val => val.json()).then(async (user) => {
     console.log(user.following)
     console.log(user.following.length)
-    while(notDaI<user.following.length) {
+    while (notDaI<user.following.length) {
         await fetch(`https://gougoule.ch/api/get-user/${user.following[notDaI]}`).then(val => val.json()).then(val => {
             postsToShow = postsToShow.concat(val.messages)   
         })
@@ -24,14 +24,13 @@ fetch(`https://gougoule.ch/api/get-user/${unique}`).then(val => val.json()).then
     });
     console.log(postsToShow)
     postsToShow = postsToShow.reverse()
-    showPosts(postsToShow, 10)
-    
+    await showPosts(postsToShow, 10)
 })
 
 window.onscroll = function(ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        showPosts(postsToShow, stupidNumber + 10)
-        console.log("scroll")
+        showPosts(postsToShow, daI + 10)
+        console.log("scroll")   
     }
 };
 
@@ -84,11 +83,12 @@ async function showPosts(messages, to) {
                         author.profilePicture = author.profilePicture.replace("|", "/")
                     }
                     document.getElementById("posts").innerHTML = document.getElementById("posts").innerHTML + `<div class="post"><button onclick='location.href="user.html?u=${author.unique}"' class="post-button-account"><img src="${author.profilePicture}" alt="" class="profilePicture" id="profilePicture" widht="100" height="100"><h2 class="post-username">${author.username}</h2><h3 class="post-unique">@${val.author}</h3></button><h2 class="post-content">${val.content}</h2><div class="buttons"><button id="like${message}" onclick="like('${message}')" class="button-like">${likeOrNot}  ${val.likes.length}</button><button onclick="location.href ='message.html?m=${message}'" class="button-comments">commentaires</button></div></div>`
-                    stupidNumber = stupidNumber + 1
                     daI++
+                    console.log(val)
                 })
             }
         })
+
     }
     
 }

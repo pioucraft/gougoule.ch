@@ -50,7 +50,7 @@ app.all("/api/get-user/:unique", async (req, res) => {
 app.all("/api/get-message/:message", async (req, res) => {
     try {
         let message = req.params.message
-        await Message.findOne({unique: message}).then(val => res.send(val))
+        await Message.findOne({unique: message}, {ip: 0}).then(val => res.send(val))
     }
     catch(err) {
         res.send(err)
