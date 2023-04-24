@@ -6,10 +6,9 @@ var stupidNumber = 0
 var postsToShow = []
 var daI = 0
 var notDaI = 0
+let posts = ""
 
 fetch(`https://gougoule.ch/api/get-user/${unique}`).then(val => val.json()).then(async (user) => {
-    console.log(user.following)
-    console.log(user.following.length)
     while (notDaI<user.following.length) {
         await fetch(`https://gougoule.ch/api/get-user/${user.following[notDaI]}`).then(val => val.json()).then(val => {
             postsToShow = postsToShow.concat(val.messages)   
@@ -22,15 +21,13 @@ fetch(`https://gougoule.ch/api/get-user/${unique}`).then(val => val.json()).then
         if(a < b) return -1;
         return 0;
     });
-    console.log(postsToShow)
     postsToShow = postsToShow.reverse()
     await showPosts(postsToShow, 10)
 })
 
 window.onscroll = function(ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        showPosts(postsToShow, daI + 10)
-        console.log("scroll")   
+        showPosts(postsToShow, daI + 10)   
     }
 };
 
@@ -59,14 +56,10 @@ function bigSearch() {
 }
 
 async function showPosts(messages, to) {
-    console.log("function")
-    console.log(messages)
     while(daI < to) {
-        console.log(messages)
         let message = messages[daI]
         await fetch(`https://gougoule.ch/api/get-message/${message}`).then(val => val.json()).then( async (val) => {
             let likeOrNot
-            console.log(val.likes.includes(unique))
             if(val.likes.includes(unique)) {
                 likeOrNot = "unlike"
             }
@@ -75,21 +68,23 @@ async function showPosts(messages, to) {
             }
 
             if(val.content) {
-                await fetch(`https://gougoule.ch/api/get-user/${val.author}`).then(author => author.json()).then(author => {
-                    for(i=0; i < val.content.length; i++) {
-                        val.content = val.content.replace("|", "/")
-                    }
-                    for(i=0; i < author.profilePicture.length; i++) {
-                        author.profilePicture = author.profilePicture.replace("|", "/")
-                    }
-                    document.getElementById("posts").innerHTML = document.getElementById("posts").innerHTML + `<div class="post"><button onclick='location.href="user.html?u=${author.unique}"' class="post-button-account"><img src="${author.profilePicture}" alt="" class="profilePicture" id="profilePicture" widht="100" height="100"><h2 class="post-username">${author.username}</h2><h3 class="post-unique">@${val.author}</h3></button><h2 class="post-content">${val.content}</h2><div class="buttons"><button id="like${message}" onclick="like('${message}')" class="button-like">${likeOrNot}  ${val.likes.length}</button><button onclick="location.href ='message.html?m=${message}'" class="button-comments">commentaires</button></div></div>`
-                    daI++
-                    console.log(val)
-                })
+                author = await fetch(`https://gougoule.ch/api/get-user/${val.author}`).then(author => author.json())
+                console.log(val)
+                console.log(author)
+
+                author.profilePicture = author.profilePicture.replaceAll("|", "/")
+                val.content = val.content.replaceAll("|", "/")
+                let daString = `<div class="post"><button onclick='location.href="user.html?u=${author.unique}"' class="post-button-account"><img src="${author.profilePicture}" alt="" class="profilePicture" id="profilePicture" widht="100" height="100"><h2 class="post-username">${author.username}</h2><h3 class="post-unique">@${val.author}</h3></button><h2 class="post-content">${val.content}</h2><div class="buttons"><button id="like${message}" onclick="like('${message}')" class="button-like">${likeOrNot}  ${val.likes.length}</button><button onclick="location.href ='message.html?m=${message}'" class="button-comments">commentaires</button></div></div>`
+                if(posts.includes(daString) == false) {
+                    posts = posts + daString
+                    console.log(val.unique)
+                }
+                document.getElementById("posts").innerHTML = posts
             }
         })
-
+        daI++
     }
+
     
 }
 
