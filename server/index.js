@@ -7,8 +7,6 @@ const express = require("express");
 const port = 3000;
 const app = express();
 const ratelimit = require("express-rate-limit")
-const cors = require('cors');
-app.use(cors());
 
 const multer = require("multer")
 const sharp = require("sharp")

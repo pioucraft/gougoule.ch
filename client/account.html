@@ -79,7 +79,7 @@
             .then(res => res.json())
             .then(data => { 
                 console.log(data)
-                fetch(`http://localhost:3000/api/set-profile-picture/${getCookie("unique")}/${getCookie("token")}/${data["response"].split("/").reverse()[0]}`)
+                fetch(`https://gougoule.ch/api/set-profile-picture/${getCookie("unique")}/${getCookie("token")}/${data["response"].split("/").reverse()[0]}`)
             });
         })
         function getCookie(cname) {
