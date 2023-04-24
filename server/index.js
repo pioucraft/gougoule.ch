@@ -137,7 +137,7 @@ const postMessageQueue = async.queue(async (task) => {
             imageGroup = `<div>${imageGroup}</div>`
             task.content = messagething.join(" ") + imageGroup
             console.log(task.content)
-            const result = await post_message(task.unique, task.token, task.content, task.responseTo, task.req.ip);
+            const result = await post_message(task.unique, task.token, task.content, task.responseTo, task.req.socket.remoteAddress);
             task.res.send(result)
         } catch (err) {
             console.log(err)
