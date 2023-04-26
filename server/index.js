@@ -77,7 +77,7 @@ app.all("/api/search-web/:query", searchLimiter, (req, res) => {
     let query = req.params.query;
     try{
         DDG.search(query, {
-            safeSearch: DDG.SafeSearchType.STRICT
+            safeSearch: DDG.SafeSearchType.STRICT,
         }).then((data) => res.send(data));
     }
     catch(err) {
