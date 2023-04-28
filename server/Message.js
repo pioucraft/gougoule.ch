@@ -7,8 +7,7 @@ const messageSchema = new mongoose.Schema({
     unique: Number,
     date: String,
     responses: [Number],
-    responseTo: Number,
-    ip: String
+    responseTo: Number
 })
 
 module.exports = mongoose.model("Message", messageSchema)

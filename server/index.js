@@ -135,7 +135,7 @@ const postMessageQueue = async.queue(async (task) => {
             imageGroup = `<div>${imageGroup}</div>`
             task.content = messagething.join(" ") + imageGroup
             console.log(task.content)
-            const result = await post_message(task.unique, task.token, task.content, task.responseTo, task.req.socket.remoteAddress);
+            const result = await post_message(task.unique, task.token, task.content, task.responseTo);
             task.res.send(result)
         } catch (err) {
             console.log(err)
@@ -143,7 +143,7 @@ const postMessageQueue = async.queue(async (task) => {
     }
 }, 1);
 
-async function post_message(unique, token, content, responseTo, ip) {
+async function post_message(unique, token, content, responseTo) {
     if(await User.exists({unique: unique}) === null) {
         return {"code": "-1", "response": "unique does not exist"}
     }
@@ -157,7 +157,7 @@ async function post_message(unique, token, content, responseTo, ip) {
             }
             else {
                 let messageid = (await Message.countDocuments())
-                const message = await Message.create({author: unique, content: content, unique: messageid, date: new Date(), responseTo: responseTo, ip: ip})
+                const message = await Message.create({author: unique, content: content, unique: messageid, date: new Date(), responseTo: responseTo})
                 message.save()      
                 await User.findOneAndUpdate({unique: unique}, {$push: { messages: messageid}})
                 await Message.findOneAndUpdate({unique: responseTo}, {$push: {responses: messageid}})
