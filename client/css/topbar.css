@@ -23,13 +23,12 @@ body {
 }
 
 .topbar-logo {
-    height: 7vh;
-    width: 7vh;
+    height: 8.5vh;
+    width: 8.5vh;
     margin-top: 1vh;
 }
 
 .topbar-title {
-    margin-left: 1vh;
     margin-top: 1vh;
     color: #fff;
     top: 50%;
