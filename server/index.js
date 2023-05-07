@@ -55,10 +55,6 @@ app.listen(port, () => {
 });
 
 
-/*function getIp(req) {
-    return req["headers"]["x-forwaded-for"]
-}*/
-
 function getIp(req) {
-    return req.ip.replace("::ffff:", "") 
+    return req["headers"]["x-forwaded-for"]
 }

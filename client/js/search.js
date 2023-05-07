@@ -1,7 +1,7 @@
 var queryString = window.location.search;
 queryString = queryString.replace("?q=", "")
 
-fetch("http://localhost:3000/api/search-web/" + queryString).then(responses => responses.json()).then(async data => {
+fetch("https://gougoule.ch/api/search-web/" + queryString).then(responses => responses.json()).then(async data => {
     console.log(data)
     let daNumber = 0
     for(i = 0; i < data.response.length; i++) {
