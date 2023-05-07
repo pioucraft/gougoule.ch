@@ -29,7 +29,9 @@ const Message = require("./Message");
 
 
 
-
+function getIp(req) {
+    return req["headers"]["x-forwaded-for"]
+} 
 
 mongoose.connect("mongodb://127.0.0.1:27017/gougoule_ch").then(() => {
     console.log("connected to mongodb database")
