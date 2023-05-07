@@ -44,7 +44,7 @@
 }
 
 @media screen and (max-width: 110vh) {
-    .search {
+    .bigSearch {
         width: 95%;
         font-size: 3vw;
     }
