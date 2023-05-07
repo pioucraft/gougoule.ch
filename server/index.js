@@ -9,6 +9,16 @@ const ratelimit = require("express-rate-limit")
 const cors = require("cors")
 app.use(cors())
 
+function blockIp(req, res, next) {
+    if(getIp(req) == "127.0.0.1"){
+        next()
+    }
+    else {
+        res.send({"error": true, "response": "what are you even doing here bruh", "code": -4})
+    }
+}
+app.use(blockIp)
+
 const multer = require("multer")
 const sharp = require("sharp")
 const fs = require("fs");
