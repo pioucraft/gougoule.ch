@@ -8,7 +8,7 @@ const DDG = require('duck-duck-scrape');
 var ips = {}
 
 function blockIp(req, res, next) {
-    if(getIp(req) == "127.0.0.1"){
+    if(req.ip == "::ffff:127.0.0.1"){
         next()
     }
     else {
@@ -34,6 +34,7 @@ function rateLimit(req, res, next) {
 }
 
 app.all("/api/search-web/:query", rateLimit, (req, res) => {
+    console.log(req["headers"]["x-forwarded-for"])
     let query = req.params.query;
     try{
         DDG.search(query, {
@@ -56,5 +57,5 @@ app.listen(port, () => {
 
 
 function getIp(req) {
-    return req["headers"]["x-forwaded-for"]
+    return req["headers"]["x-forwarded-for"]
 }
