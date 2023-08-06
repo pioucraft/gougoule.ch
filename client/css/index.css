@@ -1,0 +1,54 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#projects {
+    width: 150vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.project {
+    height: 30vh;
+    background-color: black;
+    margin: 1vh;
+}
+
+@media only screen and (max-width: 150vh) {
+    #projects {
+        width: 100vw;
+    }
+}
+
+@media only screen and (max-width: 120vh) {
+    #projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #contacts {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 80vh) {
+    #projects {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+#contacts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+}
+
+@media only screen and (max-width: 130vh) {
+    #contacts {
+        flex-direction: column;
+    }
+}
