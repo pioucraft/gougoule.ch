@@ -1,2 +1,33 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#experiments {
+    border: solid;
+    padding: 2%;
+    margin-top: 5vh;
+    border-radius: 1vh;
+}
+
+#stats {
+    border: solid;
+    padding: 2%;
+    border-radius: 1vh;
+}
+
 #githubStats {
+    width: 100%;
+}
+
+#contacts {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: solid;
+    margin-top: 5vh;
+    padding: 2%;
+    border-radius: 1vh;
 }
