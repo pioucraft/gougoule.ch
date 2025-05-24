@@ -8,35 +8,47 @@
         console.log("Welcome to Gougoule.ch");
         console.log("If you're reading this, just know that we're NOT hiring.")
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .header {
+            padding: 40px;
+            background-color: #f9f9f9;
+        }
+        .projects {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 10px;
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Gougoule.ch</h1>
-    <h2>This is my portfolio !</h2>
-    <p>Here you can find my projects and learn more about me.</p>
-
-    <hr>
-    <h3>My life :</h3>
-    <h4>2009 : I'm born</h4> 
-    <p>This is where it all started</p>
-    <hr>
-    <h4>2022 : I installed Linux</h4>
-    <p>I was only 12 years old when I decided to take this life changing decision. The first distro I installed was Ubuntu, and only three months after that, I decided to install Arch Linux, so that I could officially say "I use Arch btw !"</p>
-    <hr>
-    <h4>2023: I started web development</h4>
-    <p>It was in 2023 that I bought my first domain name (<a href="https://gougoule.ch">gougoule.ch</a>) and discovered HTML, CSS and JS.</p>
-    <hr>
-    <h4>2023-present: I've never stop building new apps.</h4>
-    <p>Since then, I have been working on various projects, most of them in JS, and more recently in Go too !</p>
-    <hr>
-    <hr>
-    <h3>My projects :</h3>
-    <h4>Gougoule.ch</h4>
-    <p>This is my personal website, where I showcase my projects. It was initially a search engine that worked by scraping results from DuckDuckGo.</p>
-    <hr>
-    <h4>Gougoule AI Frontend</h4>
-    <p>This is yet another LLM frontend. The name is really temporary and I have some big plans for this...</p>
-    <hr>
-    <h4><a href="https://leksik.ch">Leksik</a></h4>
-    <p>This is the only project I'm making in collaboration with other people. It's a website to help students learn words when learning a new language and it has many AI features in it.</p>
+    <div class="header">
+        <h1>Welcome to Gougoule.ch</h1>
+        <div class="links">
+            <a href="https://github.com/pioucraft/" target="_blank">
+                <img src="/images/github.svg" alt="GitHub" style="width: 40px; height: 40px;">
+            </a>
+        </div>
+    </div>
+    <div class="projects">
+        <h3>My projects :</h3>
+        <h4>Gougoule.ch</h4>
+        <p>This is my personal website, where I showcase my projects. It was initially a search engine that worked by scraping results from DuckDuckGo.</p>
+        <hr>
+        <h4><a href="https://github.com/pioucraft/gougoule-ai-frontend" target="_blank">Gougoule AI Frontend</a></h4>
+        <p>This is yet another LLM frontend. The name is really temporary and I have some big plans for this...</p>
+        <hr>
+        <h4><a href="https://leksik.ch" target="_blank">Leksik</a></h4>
+        <p>This is the only project I'm making in collaboration with other people. It's a website to help students learn words when learning a new language and it has many AI features in it.</p>
+        <hr>
+        <h4><a href="https://github.com/pioucraft" target="_blank">My GitHub</a></h4>
+        <p>Here you can still find all other things I've made througought my life.</p>
+        <hr>
+    </div>
 </body>
 </html>
